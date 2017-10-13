@@ -1,0 +1,58 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/toolbar_background_color</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--<style name="customTabLayout" parent="Widget.Design.TabLayout">-->
+        <!--&lt;!&ndash;<item name="tabMaxWidth">@dimen/tab_max_width</item>&ndash;&gt;-->
+        <!--<item name="tabIndicatorColor">#eb4f38</item>-->
+        <!--<item name="tabIndicatorHeight">2dp</item>-->
+        <!--<item name="tabPaddingStart">12dp</item>-->
+        <!--<item name="tabPaddingEnd">12dp</item>-->
+        <!--<item name="tabBackground">@color/white</item>-->
+        <!--<item name="tabTextAppearance">@style/customTabTextAppearance</item>-->
+        <!--<item name="tabSelectedTextColor">#eb4f38</item>-->
+    <!--</style>-->
+    <style name="CustomTabLayoutTextAppearance"
+        parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <!--
+      注意：@android:style/Widget.Material.RatingBar必须minSdkVersion 21及以上
+        才能用，目前由于需要向下兼容的问题也不太推荐使用，这里我们用@android:style/Widget.RatingBar
+        或其他style
+      -->
+    <style name="MyRatingBarStyle" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/rating_layer</item>
+        <item name="android:minHeight">16dp</item>
+        <item name="android:maxHeight">16dp</item>
+    </style>
+
+    <!-- 适用于开启滑动返回功能的Activity -->
+    <style name="AppTheme.Transparent">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <!-- 适用于欢迎界面避免第一次进来白屏或黑屏 -->
+    <style name="AppTheme.Transparent.Splash">
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
+    <!-- 自定义loading dialog -->
+    <style name="loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+</resources>

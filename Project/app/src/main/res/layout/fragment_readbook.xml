@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_background_color">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/readbookfragment_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="?attr/colorPrimary">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/readbookfragment_back"
+                android:layout_width="44dp"
+                android:layout_height="44dp">
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:src="@drawable/back"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已读图书"
+                android:textColor="@color/toolbar_text_color"
+                android:textSize="17sp"
+                android:gravity="center_vertical"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/readbookfragment_relativelayout01"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="@color/fragment_view_color"
+        android:layout_below="@+id/readbookfragment_toolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:id="@+id/readbookfragment_booksnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="图书："
+            android:textSize="12sp"
+            android:textColor="#898989"/>
+        <!--<TextView-->
+            <!--android:id="@+id/readbookfragment_isshow"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:padding="10dp"-->
+            <!--android:text="编辑"-->
+            <!--android:textSize="14sp"-->
+            <!--android:textColor="#E7554D"-->
+            <!--android:layout_alignParentRight="true" />-->
+    </RelativeLayout>
+    <ren.jieshu.jieshuren.loadmore.RecyclerViewWithFooter
+        android:id="@+id/readbookfragment_load_more"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/readbookfragment_relativelayout01"
+        android:layout_marginBottom="51dp"
+        android:layout_marginTop="10dp">
+    </ren.jieshu.jieshuren.loadmore.RecyclerViewWithFooter>
+    <RelativeLayout
+        android:id="@+id/readbookfragment_rl"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/fragment_view_color"
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:id="@+id/booklistfragment_choose_rl"
+            android:layout_width="50dp"
+            android:layout_height="50dp">
+            <ImageView
+                android:id="@+id/readbookfragment_choose"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/unchecked" />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/readbookfragment_bookstotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/booklistfragment_choose_rl"
+            android:layout_marginTop="5dp"
+            android:text="图书合计: "
+            android:textColor="#263238"
+            android:textSize="14sp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/booklistfragment_choose_rl"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="押金合计: "
+                android:textColor="#263238"
+                android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/readbookfragment_pricetotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#E7554D"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/readbookfragment_remove"
+            android:layout_width="130dp"
+            android:layout_height="match_parent"
+            android:text="删除"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_alignParentRight="true"
+            android:background="#E6546E7A"
+            />
+    </RelativeLayout>
+</RelativeLayout>

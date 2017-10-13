@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/fragment_view_color"
+    android:layout_marginTop="1dp">
+    <RelativeLayout
+        android:id="@+id/item_booklist_choose_rl"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true">
+        <ImageView
+            android:id="@+id/item_booklist_choose"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/unchecked" />
+    </RelativeLayout>
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/item_booklist_simpledraweeview"
+        android:layout_width="54dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toRightOf="@+id/item_booklist_choose_rl" />
+    <TextView
+        android:id="@+id/item_booklist_bookname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/item_booklist_simpledraweeview"
+        android:text="海洋与文明"
+        android:textColor="#263238"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/item_booklist_writer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/item_booklist_simpledraweeview"
+        android:layout_below="@id/item_booklist_bookname"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:textColor="#979797"
+        android:textSize="10sp"/>
+
+    <TextView
+        android:id="@+id/item_booklist_dbSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/item_booklist_simpledraweeview"
+        android:layout_marginLeft="10dp"
+        android:layout_alignBottom="@id/item_booklist_simpledraweeview"
+        android:textColor="#FFFFFF"
+        android:text="24小时发货"
+        android:background="@drawable/textview_radius15"
+        android:textSize="10sp"
+         />
+    <TextView
+        android:id="@+id/item_booklist_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#E7554D"
+        android:textSize="12sp"
+        android:text="￥128.00"
+        android:layout_alignBottom="@id/item_booklist_simpledraweeview"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"/>
+</RelativeLayout>

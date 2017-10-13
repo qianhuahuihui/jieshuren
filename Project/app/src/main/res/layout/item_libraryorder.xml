@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:background="@color/fragment_background_color"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1dp"
+    >
+    <RelativeLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/fragment_view_color">
+
+        <TextView
+            android:id="@+id/item_libraryorder_j_order_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="订单编号：100000254"
+            android:textSize="12sp"
+            android:layout_centerVertical="true"
+            android:textColor="#898989"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textColor="#E7554D"
+            android:textSize="12sp"
+            android:text="待收货"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/item_libraryorder_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fragment_view_color"
+        android:layout_marginTop="1dp">
+
+    </android.support.v7.widget.RecyclerView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fragment_view_color"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/item_libraryorder_yajin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:textColor="#E7554D"
+            android:textSize="11sp"
+            android:text="押金合计：345.67"/>
+        <TextView
+            android:id="@+id/item_libraryorder_book_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/item_libraryorder_yajin"
+            android:layout_marginRight="10dp"
+            android:textColor="#E7554D"
+            android:textSize="11sp"
+            android:text="共 7 本书"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fragment_view_color"
+        android:layout_marginTop="2dp"
+        android:padding="10dp"
+        >
+
+        <Button
+            android:id="@+id/item_libraryorder_button_logisticsquery"
+            android:layout_width="96dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:text="物流查询"
+            android:textColor="#000A12"
+            android:textSize="14sp"
+            android:background="#F8F8F8"/>
+
+        <Button
+            android:id="@+id/item_libraryorder_button_orderdetails"
+            android:layout_width="96dp"
+            android:layout_height="32dp"
+            android:layout_toLeftOf="@id/item_libraryorder_button_logisticsquery"
+            android:layout_marginRight="10dp"
+            android:text="订单详情"
+            android:textColor="#000A12"
+            android:textSize="14sp"
+            android:background="#F8F8F8"/>
+    </RelativeLayout>
+</LinearLayout>

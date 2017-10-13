@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:background="@color/fragment_view_color"
+    android:layout_marginTop="1dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        >
+        <TextView
+            android:id="@+id/item_rmb_explain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="借书订单"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#E6000A12"/>
+        <TextView
+            android:id="@+id/item_rmb_consume_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:text="2017-6-23 15:21"
+            android:textSize="10sp"
+            android:textColor="#979797"/>
+    </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/item_rmb_j_available_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:text="-231.21"
+            android:textSize="12sp"
+            android:textColor="#E7554D"/>
+        <TextView
+            android:id="@+id/item_rmb_service_charge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:text="-11.12"
+            android:textSize="12sp"
+            android:textColor="#E7554D"/>
+        <TextView
+            android:id="@+id/item_rmb_surplus_blance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:text="983.23"
+            android:textSize="14sp"
+            android:textColor="#E6000A12"/>
+</LinearLayout>

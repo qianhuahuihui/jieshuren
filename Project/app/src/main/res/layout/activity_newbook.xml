@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_background_color">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="?attr/colorPrimary">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/newbook_back"
+                android:layout_width="44dp"
+                android:layout_height="44dp">
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:src="@drawable/back"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/newbook_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="新书榜"
+                android:textColor="@color/toolbar_text_color"
+                android:textSize="17sp"
+                android:gravity="center_vertical"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+            <ImageView
+                android:id="@+id/newbook_classifiedquery"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/topbooks"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                />
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:background="@color/fragment_view_color">-->
+
+
+
+        <!--<ren.jieshu.jieshuren.widget.SwitchView-->
+            <!--android:id="@+id/newbook_switchview"-->
+            <!--android:layout_width="36dp"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--/>-->
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_toLeftOf="@id/newbook_switchview"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:textColor="@color/item_homefragment_imageviewbutton_textcolor"-->
+            <!--android:textSize="10sp"-->
+            <!--android:text="仅显示24小时发货"/>-->
+    <!--</RelativeLayout>-->
+
+    <ren.jieshu.jieshuren.loadmore.RecyclerViewWithFooter
+        android:layout_marginTop="10dp"
+        android:id="@+id/newbook_load_more"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ren.jieshu.jieshuren.loadmore.RecyclerViewWithFooter>
+
+</LinearLayout>

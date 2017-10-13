@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_background_color">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/confirmationreturnbook_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="?attr/colorPrimary">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:id="@+id/pay_back"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp">
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:src="@drawable/back"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="确认还书"
+                    android:textColor="@color/toolbar_text_color"
+                    android:textSize="17sp"
+                    android:gravity="center_vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/confirmationreturnbook_toolbar">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/fragment_view_color"
+                >
+                <ImageView
+                    android:id="@+id/orderdetails_iv_location"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/location"/>
+                <TextView
+                    android:id="@+id/confirmationreturnbook_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/orderdetails_iv_location"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:textColor="#E6263238"
+                    android:text="量子客"/>
+                <TextView
+                    android:id="@+id/confirmationreturnbook_mobile"
+                    android:layout_toRightOf="@id/confirmationreturnbook_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:textColor="#E6263238"
+                    android:text="15265616516"/>
+                <TextView
+                    android:id="@+id/confirmationreturnbook_address"
+                    android:layout_toRightOf="@id/orderdetails_iv_location"
+                    android:layout_below="@id/confirmationreturnbook_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="#898989"
+                    android:textSize="12sp"
+                    android:text="地址: 上海市松江区"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:background="@color/fragment_view_color">
+                <TextView
+                    android:id="@+id/confirmationreturnbook_danhao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="快递单号"
+                    android:textColor="#E6263238"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/confirmationreturnbook_et_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/confirmationreturnbook_danhao"
+                    android:layout_centerVertical="true"
+                    android:background="@color/fragment_view_color"
+                    android:textColorHint="#979797"
+                    android:hint="请输入快递单号"
+                    android:textColor="#E6263238"
+                    android:textSize="16sp" />
+                <ImageView
+                    android:id="@+id/confirmationreturnbook_auto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/shibie"/>
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="1dp"
+                android:orientation="horizontal"
+                android:background="@color/fragment_view_color">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:text="快递公司"
+                    android:textColor="#E6263238"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/confirmationreturnbook_kuaidi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:text="自动识别，无需填写......"
+                    android:textColor="#979797"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/confirmationreturnbook_load_more"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/fragment_view_color">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <RelativeLayout
+                android:id="@+id/wearpayment_rl_02"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/fragment_view_color"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/confirmationreturnbook_needPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.0"
+                    android:textColor="#E7554D"
+                    android:textSize="11sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+                <TextView
+                    android:id="@+id/wearpayment_02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/confirmationreturnbook_needPrice"
+                    android:text="本书 押金合计："
+                    android:textColor="#898989"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/confirmationreturnbook_bookcount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@id/wearpayment_02"
+                    android:text="0"
+                    android:textColor="#E7554D"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/confirmationreturnbook_bookcount"
+                    android:text="共"
+                    android:textColor="#898989"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/fragment_view_color"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <Button
+            android:id="@+id/confirmationreturnbook_returnbook"
+            android:layout_width="126dp"
+            android:layout_height="50dp"
+            android:text="确认还书"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_alignParentRight="true"
+            android:background="#E7554D"
+            />
+    </RelativeLayout>
+</RelativeLayout>

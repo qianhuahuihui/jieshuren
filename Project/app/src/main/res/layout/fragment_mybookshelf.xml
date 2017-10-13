@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_background_color">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mybookshelffragment_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="?attr/colorPrimary">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/mybookshelffragment_back"
+                android:layout_width="44dp"
+                android:layout_height="44dp">
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:src="@drawable/back"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的书架"
+                android:textColor="@color/toolbar_text_color"
+                android:textSize="17sp"
+                android:gravity="center_vertical"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/mybookshelffragment_relativelayout01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mybookshelffragment_toolbar"
+        android:background="@color/fragment_view_color">
+        <TextView
+            android:id="@+id/mybookshelffragment_booksnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="图书：2 本"
+            android:textSize="12sp"
+            android:textColor="#898989"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:text="完成"
+            android:textSize="12sp"
+            android:textColor="#E7554D"/>
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mybookshelffragment_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mybookshelffragment_relativelayout01"
+        android:layout_marginTop="10dp"
+        android:background="@color/fragment_view_color"></android.support.v7.widget.RecyclerView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/fragment_view_color"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:id="@+id/mybookshelffragment_choose"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/unchecked"/>
+
+        <TextView
+            android:id="@+id/mybookshelffragment_bookstotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/mybookshelffragment_choose"
+            android:layout_marginTop="5dp"
+            android:text="图书合计: 1 本"
+            android:textColor="#263238"
+            android:textSize="14sp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/mybookshelffragment_choose"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="押金合计: "
+                android:textColor="#263238"
+                android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/mybookshelffragment_pricetotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="128.00"
+                android:textColor="#E7554D"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="126dp"
+            android:layout_height="match_parent"
+            android:text="删除"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_alignParentRight="true"
+            android:background="#E6546E7A"
+            />
+    </RelativeLayout>
+</RelativeLayout>

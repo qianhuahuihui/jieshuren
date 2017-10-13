@@ -1,0 +1,109 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        jieshuren {
+            keyAlias 'jieshuren'
+            keyPassword 'jhuilei1984'
+            storeFile file('D:/AndroidKey/jieshuren.jks')
+            storePassword 'jhuilei1984'
+        }
+    }
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
+    defaultConfig {
+        applicationId "ren.jieshu.jieshuren"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk { //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86", "arm64-v8a", "x86_64"
+        }
+    }
+    //针对不同CPU 类型打不同的包
+//    splits {
+//        abi {
+//            enable true
+//            reset()
+//            include 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a' //select ABIs to build APKs for
+//            universalApk true //generate an additional APK that contains all the ABIs
+//        }
+//    }
+//    // map for the version code
+//    project.ext.versionCodes = ['armeabi': 1, 'armeabi-v7a': 2, 'arm64-v8a': 3, 'mips': 5, 'mips64': 6, 'x86': 8, 'x86_64': 9]
+//    android.applicationVariants.all { variant ->
+//        // assign different version code for each output
+//        variant.outputs.each { output ->
+//            output.versionCodeOverride =
+//                    project.ext.versionCodes.get(output.getFilter(com.android.build.OutputFile.ABI), 0) * 1000000 + android.defaultConfig.versionCode
+//        }
+//    }
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+//            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.jieshuren
+        }
+        debug {
+            signingConfig signingConfigs.jieshuren
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    configurations.all {
+
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            def requested = details.requested
+            if (requested.group == 'com.android.support') {
+                if (!requested.name.startsWith("multidex")) {
+                    details.useVersion '25.3.0'
+                }
+            }
+        }
+    }
+
+}
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:recyclerview-v7:25.2.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.daimajia.slider:library:1.1.5@aar'
+    compile 'com.jiechic.library:xUtils:2.6.14'
+    compile 'com.google.code.gson:gson:2.3.1'
+    compile 'com.android.support:support-v4:26.0.0-alpha1'
+    compile 'com.facebook.fresco:fresco:0.12.0'
+    compile 'com.zhy:okhttputils:2.6.2'
+    compile 'com.android.support:design:25.2.0'
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    compile files('libs/SocialSDK_WeiXin_Full.jar')
+    compile files('libs/umeng_shareboard_widget.jar')
+    compile files('libs/umeng_social_api.jar')
+    compile files('libs/umeng_social_net.jar')
+    compile files('libs/umeng_social_shareboard.jar')
+    compile files('libs/umeng_social_tool.jar')
+    compile 'com.amap.api:3dmap:latest.integration'
+    compile 'com.amap.api:search:latest.integration'
+    compile 'com.zaaach:citypicker:1.1'
+    compile 'com.netease.scan:lib-qr-scan:1.0.0'
+    compile 'com.allenliu.versionchecklib:library:1.5'
+    //充值传递数据
+    compile 'org.greenrobot:eventbus:3.0.0'
+}

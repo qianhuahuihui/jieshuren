@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1dp"
+    >
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/item_searchresult_simpledraweeview"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"/>
+    <TextView
+        android:id="@+id/item_searchresult_bookname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/item_searchresult_simpledraweeview"
+        android:text="海洋与文明"
+        android:textColor="#263238"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/item_searchresult_simpledraweeview"
+        android:layout_below="@id/item_searchresult_bookname"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="作者：[美] 林肯·佩恩"
+        android:textColor="#979797"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/item_searchresult_simpledraweeview"
+        android:layout_marginLeft="10dp"
+        android:layout_alignBottom="@id/item_searchresult_simpledraweeview"
+        android:text="24小时发货"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/textview_radius15"
+        android:textSize="14sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/item_searchresult_simpledraweeview"
+        android:textColor="#E7554D"
+        android:textSize="16sp"
+        android:text="￥128.00"/>
+</RelativeLayout>

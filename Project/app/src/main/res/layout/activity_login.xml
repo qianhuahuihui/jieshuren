@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <LinearLayout
+        android:id="@+id/login_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/wechat"
+            android:layout_gravity="center_horizontal"
+            />
+        <TextView
+            android:id="@+id/login_login"
+            android:layout_marginTop="10dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="微信登录"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:padding="10dp"
+            android:gravity="center_horizontal"
+            android:background="@drawable/textview_radius15"/>
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/login_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="借书人，让每个家庭都有一个装满三百本书的书架。"
+        android:layout_below="@id/login_ll"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="现在就开始读书吧"
+        android:layout_below="@id/login_tv"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+</RelativeLayout>

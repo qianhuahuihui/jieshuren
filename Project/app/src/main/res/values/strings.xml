@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">借书人</string>
+
+    <string name="app_tip">提示</string>
+
+    <string name="internet_error">网络错误</string>
+    <string name="no_data">没有搜索到数据</string>
+    <string name="no_more_data">没有更多数据啦</string>
+</resources>

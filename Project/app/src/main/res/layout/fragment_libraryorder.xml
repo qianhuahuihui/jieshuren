@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_background_color">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="?attr/colorPrimary">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/libraryorderfragment_back"
+                android:layout_width="44dp"
+                android:layout_height="44dp">
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:src="@drawable/back"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="借书订单"
+                android:textColor="@color/toolbar_text_color"
+                android:textSize="17sp"
+                android:gravity="center_vertical"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/libraryorderfragment_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        fresco:tabSelectedTextColor="@color/selector_newbook_tab_text"
+        android:background="@color/fragment_view_color"
+        >
+        <!--style="@style/customTabLayout"-->
+
+    </android.support.design.widget.TabLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/libraryorderfragment_viewPager"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <!--<com.cjj.MaterialRefreshLayout-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:id="@+id/libraryorderfragment_refreshlayout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:overlay="false"-->
+        <!--app:wave_show="false"-->
+        <!--app:wave_color="#90ffffff"-->
+        <!--app:progress_colors="@array/material_colors"-->
+        <!--app:wave_height_type="higher"-->
+        <!--&gt;-->
+
+        <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:id="@+id/libraryorderfragment_recyclerview"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+        <!--</android.support.v7.widget.RecyclerView>-->
+
+    <!--</com.cjj.MaterialRefreshLayout>-->
+
+</LinearLayout>

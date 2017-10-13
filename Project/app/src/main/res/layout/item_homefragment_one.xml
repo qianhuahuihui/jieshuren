@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fragment_view_color"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    <!--<com.daimajia.slider.library.SliderLayout-->
+        <!--android:id="@+id/item_homefragment_sliderlayout"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:layout_width="200dp"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:background="@color/fragment_view_color"-->
+        <!--&gt;-->
+
+    <!--</com.daimajia.slider.library.SliderLayout>-->
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="160dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:src="@drawable/jieshurenlogo" />
+    <View
+        android:id="@+id/item_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/fragment_background_color" />
+    <RelativeLayout
+        android:id="@+id/item_homefragment_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fragment_view_color">
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/edittext_style"
+            android:hint="书名、作者、ISBN"
+            android:paddingLeft="10dp"
+            android:textSize="14sp"/>
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/searchbutton"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/fragment_background_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/fragment_view_color"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/item_homefragment_newbook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/item_homefragment_imageviewbutton_size"
+                    android:layout_height="@dimen/item_homefragment_imageviewbutton_size"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/newbook" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="新书榜"
+                    android:textColor="@color/item_homefragment_imageviewbutton_textcolor"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/fragment_background_color" />
+
+            <LinearLayout
+                android:id="@+id/item_homefragment_loanlist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/item_homefragment_imageviewbutton_size"
+                    android:layout_height="@dimen/item_homefragment_imageviewbutton_size"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/bestbook" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="借阅榜"
+                    android:textColor="@color/item_homefragment_imageviewbutton_textcolor"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/fragment_background_color" />
+
+            <LinearLayout
+                android:id="@+id/item_homefragment_lendbook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/item_homefragment_imageviewbutton_size"
+                    android:layout_height="@dimen/item_homefragment_imageviewbutton_size"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/lendbook" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="图书转借"
+                    android:textColor="@color/item_homefragment_imageviewbutton_textcolor"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/fragment_background_color" />
+
+            <LinearLayout
+                android:id="@+id/item_homefragment_classifiedquery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/item_homefragment_imageviewbutton_size"
+                    android:layout_height="@dimen/item_homefragment_imageviewbutton_size"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/sharedbookshelf" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="图书分类"
+                    android:textColor="@color/item_homefragment_imageviewbutton_textcolor"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/fragment_background_color" />
+    </LinearLayout>
+</RelativeLayout>

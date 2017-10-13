@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_background_color">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="?attr/colorPrimary">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的中心"
+                android:textColor="@color/toolbar_text_color"
+                android:textSize="17sp"
+                android:gravity="center_vertical"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/background">
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/minefragment_setting"-->
+            <!--android:layout_width="50dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_alignParentRight="true"-->
+          <!--&gt;-->
+            <!--<ImageView-->
+                <!--android:layout_width="22dp"-->
+                <!--android:layout_height="22dp"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:src="@drawable/setting" />-->
+        <!--</RelativeLayout>-->
+
+        <RelativeLayout
+            android:id="@+id/minefragment_rl"
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/minefragment_head"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                fresco:roundAsCircle="true"
+                fresco:placeholderImage="@drawable/head"
+                fresco:placeholderImageScaleType="fitCenter"/>
+
+            <TextView
+                android:id="@+id/minefragment_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/minefragment_head"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/minefragment_head"
+                android:text="昵称："
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/minefragment_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/minefragment_name"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/minefragment_head"
+                android:text="ID："
+                android:textColor="#F0F0F0"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/minefragment_head"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/minefragment_head"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="押金："
+                    android:textColor="#F0F0F0"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/minefragment_deposit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.0"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="余额："
+                    android:textColor="#F0F0F0"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/minefragment_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.0"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </RelativeLayout>
+       <LinearLayout
+           android:id="@+id/minefragment_login"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:visibility="gone"
+           android:layout_centerInParent="true">
+           <ImageView
+               android:layout_width="50dp"
+               android:layout_height="50dp"
+               android:src="@drawable/head"
+               android:layout_gravity="center_horizontal"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="点击登录"
+               android:layout_marginTop="5dp"
+               android:textColor="#FFFFFF"/>
+       </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@color/fragment_view_color">
+
+        <LinearLayout
+            android:id="@+id/minefragment_mywallet_click"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_width="@dimen/item_homefragment_imageviewbutton_size"
+                android:layout_height="@dimen/item_homefragment_imageviewbutton_size"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/wallet"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="我的钱包"
+                android:textSize="12sp"
+                android:textColor="@color/item_homefragment_imageviewbutton_textcolor"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/fragment_background_color"/>
+        <LinearLayout
+            android:id="@+id/minefragment_libraryorder_click"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_width="@dimen/item_homefragment_imageviewbutton_size"
+                android:layout_height="@dimen/item_homefragment_imageviewbutton_size"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/borrowbook"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="借书订单"
+                android:textSize="12sp"
+                android:textColor="@color/item_homefragment_imageviewbutton_textcolor"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/fragment_background_color"/>
+        <LinearLayout
+            android:id="@+id/minefragment_returnbook"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_width="@dimen/item_homefragment_imageviewbutton_size"
+                android:layout_height="@dimen/item_homefragment_imageviewbutton_size"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/returnbook"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="还书订单"
+                android:textSize="12sp"
+                android:textColor="@color/item_homefragment_imageviewbutton_textcolor"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/fragment_background_color"/>
+        <LinearLayout
+            android:id="@+id/minefragment_returnbookaction_click"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/item_homefragment_imageviewbutton_size"
+                android:layout_height="@dimen/item_homefragment_imageviewbutton_size"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/returnbookaction" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:text="我要还书"
+                android:textColor="@color/item_homefragment_imageviewbutton_textcolor"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/minefragment_rl_wearpayment"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/fragment_view_color"
+        >
+        <ImageView
+            android:id="@+id/minefragment_iv_pay"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/pay"/>
+        <TextView
+            android:id="@+id/minefragment_tv_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/minefragment_iv_pay"
+            android:layout_marginLeft="10dp"
+            android:text="磨损支付"
+            android:textSize="14sp"
+            android:textColor="#E6263238"
+            android:layout_centerVertical="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/minefragment_tv_pay"
+            android:text="共58元"
+            android:textSize="10sp"
+            android:textColor="#DE3D3D"
+            android:layout_marginLeft="10dp"
+            android:layout_alignBottom="@id/minefragment_tv_pay" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/more" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/minefragment_rl_read"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/fragment_view_color"
+        >
+        <ImageView
+            android:id="@+id/minefragment_iv_read"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/read"/>
+        <TextView
+            android:id="@+id/minefragment_tv_read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/minefragment_iv_read"
+            android:layout_centerVertical="true"
+            android:text="已读图书"
+            android:textSize="14sp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#E6263238"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/minefragment_tv_read"
+            android:text="共125本"
+            android:textSize="10sp"
+            android:textColor="#DE3D3D"
+            android:layout_marginLeft="10dp"
+            android:layout_alignBottom="@id/minefragment_tv_read"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/more"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/minefragment_rl_bookshelf"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/fragment_view_color"
+        >
+        <ImageView
+            android:id="@+id/minefragment_iv_bookshelf"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/bookshelf"/>
+        <TextView
+            android:id="@+id/minefragment_tv_bookshelf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的书架"
+            android:textSize="14sp"
+            android:textColor="#E6263238"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/minefragment_iv_bookshelf" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="共358本"
+            android:textSize="10sp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#DE3D3D"
+            android:layout_toRightOf="@id/minefragment_tv_bookshelf"
+            android:layout_alignBottom="@id/minefragment_tv_bookshelf" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/more"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/minefragment_rl_setting"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/fragment_view_color"
+        >
+        <ImageView
+            android:id="@+id/minefragment_iv_setting"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/bookshelf"/>
+        <TextView
+            android:id="@+id/minefragment_tv_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置"
+            android:textSize="14sp"
+            android:textColor="#E6263238"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/minefragment_iv_setting" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/more"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fragment_view_color">
+        <TextView
+            android:id="@+id/item_orderlist_orderSn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="订单编号：10000025415038"
+            android:textSize="12sp"
+            android:textColor="#898989"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/item_orderlist_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:text="待收货"
+            android:textSize="12sp"
+            android:textColor="#E7554D"/>
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/item_orderlist_list"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/fragment_view_color"
+        ></android.support.v7.widget.RecyclerView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fragment_view_color"
+        android:layout_marginTop="1dp"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/item_orderlist_totalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="345.67"
+            android:textSize="11sp"
+            android:textColor="#E7554D"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+        <TextView
+            android:id="@+id/item_wearpayment_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="本书 押金合计："
+            android:textSize="11sp"
+            android:textColor="#898989"
+            android:layout_toLeftOf="@id/item_orderlist_totalPrice" />
+        <TextView
+            android:id="@+id/item_orderlist_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="7"
+            android:textSize="11sp"
+            android:textColor="#E7554D"
+            android:layout_toLeftOf="@id/item_wearpayment_02" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="共"
+            android:textSize="11sp"
+            android:textColor="#898989"
+            android:layout_toLeftOf="@id/item_orderlist_count" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fragment_view_color"
+        android:layout_marginTop="2dp"
+        android:padding="10dp"
+        >
+
+        <Button
+            android:id="@+id/item_orderlist_logisticsquery"
+            android:layout_width="96dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:text="取消订单"
+            android:textColor="#000A12"
+            android:textSize="14sp"
+            android:background="#F8F8F8"/>
+
+        <Button
+            android:id="@+id/item_orderlist_orderdetails"
+            android:layout_width="96dp"
+            android:layout_height="32dp"
+            android:layout_toLeftOf="@id/item_orderlist_logisticsquery"
+            android:layout_marginRight="10dp"
+            android:text="支付订单"
+            android:textSize="14sp"
+            android:textColor="#000A12"
+            android:background="#F8F8F8"/>
+    </RelativeLayout>
+</LinearLayout>

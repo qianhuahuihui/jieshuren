@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ratingbar="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_background_color">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="?attr/colorPrimary">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/thisbookfriend_back"
+                android:layout_width="44dp"
+                android:layout_height="44dp">
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:src="@drawable/back"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="借阅此书的书友"
+                android:textColor="@color/toolbar_text_color"
+                android:textSize="17sp"
+                android:gravity="center_vertical"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fragment_view_color"
+        android:layout_marginTop="1dp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/thisbookfriend_simpledraweeview"
+            android:layout_width="54dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:id="@+id/thisbookfriend_bookname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/thisbookfriend_simpledraweeview"
+            android:text="海洋与文明"
+            android:textColor="#263238"
+            android:textSize="14sp"/>
+
+            <LinearLayout
+                android:id="@+id/thisbookfriend_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/thisbookfriend_simpledraweeview"
+                android:layout_below="@id/thisbookfriend_bookname">
+                <ren.jieshu.jieshuren.widget.StarBar
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/thisbookfriend_average_star"
+                    ratingbar:starSize="8dp"
+                    ratingbar:starCount="5"
+                    ratingbar:starDistance="1dp"
+                    android:layout_gravity="center_vertical"
+                    ratingbar:starFill="@drawable/star_press"
+                    ratingbar:starEmpty="@drawable/star" />
+                <TextView
+                    android:id="@+id/thisbookfriend_average"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="10sp"
+                    android:textColor="#FF8753"
+                    android:text="3.5"/>
+                <TextView
+                    android:id="@+id/thisbookfriend_numraters"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="10sp"
+                    android:textColor="#979797"
+                    android:text="（187人评价）"/>
+            </LinearLayout>
+
+        <TextView
+            android:id="@+id/thisbookfriend_bookAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="作者：[美] 林肯·佩恩"
+            android:textColor="#979797"
+            android:textSize="10sp"
+            android:layout_below="@id/thisbookfriend_ll"
+            android:layout_toRightOf="@id/thisbookfriend_simpledraweeview" />
+        <TextView
+            android:id="@+id/thisbookfriend_use"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="10sp"
+            android:textColor="#979797"
+            android:text="已借出：28"/>
+        <TextView
+            android:id="@+id/thisbookfriend_readCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/thisbookfriend_use"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="10sp"
+            android:textColor="#979797"
+            android:text="借阅人次：32"/>
+        <TextView
+            android:id="@+id/thisbookfriend_bookPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@id/thisbookfriend_simpledraweeview"
+            android:textColor="#E7554D"
+            android:textSize="14sp"
+            android:text="￥128.00"
+            />
+    </RelativeLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/thisbookfriend_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:tabMode="fixed"
+        android:background="@color/fragment_view_color"
+        fresco:tabSelectedTextColor="@color/selector_newbook_tab_text"
+        >
+        <!--style="@style/customTabLayout"-->
+
+    </android.support.design.widget.TabLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/thisbookfriend_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

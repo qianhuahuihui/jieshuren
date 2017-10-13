@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ratingbar="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_background_color">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/bookdetails_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="?attr/colorPrimary">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/transfer_back"
+                android:layout_width="44dp"
+                android:layout_height="44dp">
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:src="@drawable/back"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/bookdetails_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:text="转出积分"
+                android:textColor="@color/toolbar_text_color"
+                android:textSize="17sp"
+                />
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bookdetails_toolbar"
+        android:background="@color/fragment_view_color"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="可用积分"
+            android:textSize="20sp"
+            android:textColor="#979797"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"/>
+        <TextView
+            android:id="@+id/transfer_integral_available"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0"
+            android:textSize="30sp"
+            android:textColor="#000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="32dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/fragment_view_color"
+            android:hint="请输入比特股账户名"
+            android:textColor="#E6263238"
+            android:textColorHint="#979797"
+            android:textSize="20sp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/fragment_view_color"
+            android:hint="请输入要转出的积分"
+            android:textColor="#E6263238"
+            android:textColorHint="#979797"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/bookdetails_lll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/fragment_view_color"
+        android:layout_alignParentBottom="true"
+        >
+
+            <TextView
+                android:id="@+id/bookdetails_bookPrice"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#DE3D3D"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="提取手续费：50积分/笔，最少提取数量100积分"/>
+        <Button
+            android:id="@+id/bookdetails_addBorrow"
+            android:layout_width="126dp"
+            android:layout_height="50dp"
+            android:background="#E7554D"
+            android:text="确认转出"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+</RelativeLayout>

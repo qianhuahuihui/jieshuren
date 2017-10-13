@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/fragment_view_color">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/item_homefragment_two_headview"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            fresco:roundAsCircle="true"
+            fresco:placeholderImage="@drawable/readbookhead"
+            fresco:placeholderImageScaleType="fitCenter"/>
+
+        <TextView
+            android:id="@+id/item_homefragment_two_member_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/item_homefragment_two_headview"
+            android:text=""
+            android:textSize="12sp"
+            android:textColor="#000A12" />
+    <TextView
+        android:id="@+id/item_homefragment_two_distancce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/textview_radius15"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/item_homefragment_two_member_name" />
+        <TextView
+            android:id="@+id/item_homefragment_two_book_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_homefragment_two_member_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/item_homefragment_two_headview"
+            android:text=""
+            android:textSize="12sp"
+            android:textColor="#898989" />
+
+
+    <TextView
+        android:id="@+id/item_homefragment_two_showall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_homefragment_two_member_name"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/item_homefragment_two_book_count"
+        android:text="显示全部"
+        android:textColor="#E7554D"
+        android:textSize="12sp" />
+        <TextView
+            android:id="@+id/item_homefragment_two_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="23分钟前"
+            android:textColor="#979797"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/item_homefragment_two_area_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/item_homefragment_two_time"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text=""
+            android:textColor="#435B67"
+            android:textSize="10sp" />
+
+        <View
+            android:id="@+id/item_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/item_homefragment_two_headview"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/fragment_background_color" />
+
+
+        <android.support.v7.widget.RecyclerView
+        android:id="@+id/item_homefragment_two_recyclerview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+            android:layout_below="@id/item_view"
+            android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp">
+        </android.support.v7.widget.RecyclerView>
+
+
+
+    <View
+        android:layout_below="@id/item_homefragment_two_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/fragment_background_color"/>
+    </RelativeLayout>
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--xmlns:fresco="http://schemas.android.com/tools"-->
+    <!--android:layout_margin="5dp"-->
+    <!--android:id="@+id/cv_item"-->
+    <!--android:foreground="?android:attr/selectableItemBackground"-->
+    <!--card_view:cardCornerRadius="4dp"-->
+    <!--card_view:cardElevation="4dp"-->
+    <!--card_view:cardBackgroundColor="@color/fragment_background_color">-->
