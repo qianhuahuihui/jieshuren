@@ -64,6 +64,7 @@
             android:layout_marginBottom="32dp"/>
 
         <EditText
+            android:id="@+id/bit_count_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -74,6 +75,7 @@
             android:textColorHint="#979797"
             android:textSize="20sp" />
         <EditText
+            android:id="@+id/integral_need_output"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -106,7 +108,7 @@
                 android:gravity="center"
                 android:text="提取手续费：50积分/笔，最少提取数量100积分"/>
         <Button
-            android:id="@+id/bookdetails_addBorrow"
+            android:id="@+id/integral_output_bt"
             android:layout_width="126dp"
             android:layout_height="50dp"
             android:background="#E7554D"

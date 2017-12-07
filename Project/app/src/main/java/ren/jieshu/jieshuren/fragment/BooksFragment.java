@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import okhttp3.Call;
 import ren.jieshu.jieshuren.Adapter.LibraryOrderAdapter;
 import ren.jieshu.jieshuren.Adapter.OrderListAdapter;
 import ren.jieshu.jieshuren.R;
+import ren.jieshu.jieshuren.activity.ExpressActivity;
 import ren.jieshu.jieshuren.activity.PayActivity;
 import ren.jieshu.jieshuren.base.BaseFragment;
 import ren.jieshu.jieshuren.entity.HttpURLConfig;
@@ -78,6 +80,7 @@ public class BooksFragment extends BaseFragment {
                 if (books.getList().size() > 0) {
                     page = page + 1;
                     listall.addAll( books.getList());
+
                     booksfragment_load_more.getAdapter().notifyDataSetChanged();
                 }else {
                     if (page == 1){
@@ -156,6 +159,16 @@ public class BooksFragment extends BaseFragment {
                 intent.putExtra("price",returnbookBean.getTotalPrice());
                 intent.putExtra("PAYTYPE","0");
                 intent.putExtra("j_available_blance",books.getAvailable_blance().toString());
+
+                startActivity(intent);
+            }
+
+            @Override
+            public void searchExpress(Integer position, ReturnbookBean returnbookBean) {
+                Intent intent = new Intent();
+                intent.setClass(getContext(),ExpressActivity.class);
+                intent.putExtra("express_code",returnbookBean.getExpress_code().toString());
+                intent.putExtra("express_number",returnbookBean.getExpress_number().toString());
 
                 startActivity(intent);
             }

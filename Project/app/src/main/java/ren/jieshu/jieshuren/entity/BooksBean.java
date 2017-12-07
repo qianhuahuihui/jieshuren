@@ -31,7 +31,7 @@ public class BooksBean implements Serializable {
     private String member_name;
     private String area_name;
     private String distance;
-    private String member_image;
+    private String j_headimgurl;
     private Date time;
     private String image;
     private Integer book_count;
@@ -110,12 +110,12 @@ public class BooksBean implements Serializable {
         this.distance = distance;
     }
 
-    public String getMember_image() {
-        return member_image;
+    public String getJ_headimgurl() {
+        return j_headimgurl;
     }
 
-    public void setMember_image(String member_image) {
-        this.member_image = member_image;
+    public void setJ_headimgurl(String j_headimgurl) {
+        this.j_headimgurl = j_headimgurl;
     }
 
     public Date getTime() {

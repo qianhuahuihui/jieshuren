@@ -60,7 +60,7 @@
             android:textSize="11sp"
             android:text="共 7 本书"/>
     </RelativeLayout>
-    <RelativeLayout
+    <!--<RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/fragment_view_color"
@@ -88,5 +88,6 @@
             android:textSize="14sp"
             android:textColor="#000A12"
             android:background="#F8F8F8"/>
-    </RelativeLayout>
+    </RelativeLayout>-->
+
 </LinearLayout>

@@ -158,6 +158,7 @@ public class BookDetailsActivity extends BaseActivity {
     private void bookdetails_bookfriend(View view){
          Intent intent = new Intent();
          intent.setClass(getBaseContext(),ThisBookFriendActivity.class);
+         //intent.putExtra("bookId",bookDetails.getBookid());
          Bundle bundle = new Bundle();
          bundle.putSerializable("bookDetails",bookDetails);
          intent.putExtras(bundle);

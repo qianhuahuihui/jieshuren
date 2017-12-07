@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.tencent.bugly.Bugly;
+import com.tencent.bugly.beta.Beta;
+
 import ren.jieshu.jieshuren.R;
 import ren.jieshu.jieshuren.base.BaseActivity;
 import ren.jieshu.jieshuren.fragment.BookbuddyFragment;
@@ -89,7 +92,8 @@ public class MainActivity extends BaseActivity implements TabHost.OnTabChangeLis
 
     @Override
     protected void initData() {
-
+      //  Bugly.init(this,"b031f7bfcc",true);
+        Bugly.init(this,"c703debc48",true); //借书人
     }
 
 

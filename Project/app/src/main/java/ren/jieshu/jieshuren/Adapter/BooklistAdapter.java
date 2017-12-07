@@ -74,9 +74,17 @@ public class BooklistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         ((BooklistAdapter.BooklistViewHolder)holder).item_booklist_simpledraweeview.setImageURI(Uri.parse(listList.get(position).getImage()));
         ((BooklistAdapter.BooklistViewHolder)holder).item_booklist_bookname.setText(listList.get(position).getTitle());
         ((BooklistAdapter.BooklistViewHolder)holder).item_booklist_writer.setText(listList.get(position).getAuthor());
-        if (listList.get(position).getDbSize()!= null) {
-            if (listList.get(position).getDbSize() == 0) {
-                ((BooklistAdapter.BooklistViewHolder) holder).item_booklist_dbSize.setText("2-5天发货");
+        if(listList.get(position).getBookStatus()==0) {
+            if (listList.get(position).getDbSize() != null) {
+                if (listList.get(position).getDbSize() == 0) {
+                    ((BooklistAdapter.BooklistViewHolder) holder).item_booklist_dbSize.setText("2-5天发货");
+                } else {
+                    ((BooklistAdapter.BooklistViewHolder) holder).item_booklist_dbSize.setText("24小时发货");
+                }
+            }
+        }else{
+            if (listList.get(position).getDbSize() <= 0) {
+                ((BooklistAdapter.BooklistViewHolder) holder).item_booklist_dbSize.setText("暂不可借");
             } else {
                 ((BooklistAdapter.BooklistViewHolder) holder).item_booklist_dbSize.setText("24小时发货");
             }

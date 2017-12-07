@@ -1,34 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fragment_background_color">
+    android:background="@color/fragment_background_color"
+    android:orientation="vertical">
+
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:background="?attr/colorPrimary">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <RelativeLayout
                 android:id="@+id/search_back"
                 android:layout_width="50dp"
                 android:layout_height="50dp">
+
                 <ImageView
                     android:layout_width="17dp"
                     android:layout_height="17dp"
-                    android:src="@drawable/back"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/back" />
             </RelativeLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
                 android:text="搜索"
                 android:textColor="@color/toolbar_text_color"
-                android:textSize="17sp"
-                android:gravity="center_vertical"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
+                android:textSize="17sp" />
         </RelativeLayout>
 
 
@@ -50,8 +58,8 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/edittext_style"
             android:hint="书名、作者、ISBN"
-            android:paddingLeft="10dp"
             android:imeOptions="actionSearch"
+            android:paddingLeft="10dp"
             android:singleLine="true"
             android:textSize="14sp" />
 
@@ -71,67 +79,138 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/search_number"
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/search_number"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:layout_marginTop="2dp"-->
+                <!--android:background="@color/fragment_view_color"-->
+                <!--android:padding="10dp"-->
+                <!--android:text="共2个结果"-->
+                <!--android:textSize="12sp"-->
+                <!--android:visibility="gone" />-->
+
+            <!--<Button-->
+                <!--android:id="@+id/search_douban"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="50dp"-->
+                <!--android:layout_marginRight="50dp"-->
+                <!--android:text="确定"-->
+                <!--android:textColor="#E7554D"-->
+                <!--android:visibility="gone" />-->
+        <!--</LinearLayout>-->
+
+        <LinearLayout
+            android:id="@+id/search_button_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/fragment_view_color"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="10dp"
-            android:text="共2个结果"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="6dp"
             android:visibility="gone"
-            android:padding="10dp"
-            android:textSize="12sp"/>
+            android:layout_weight="1"
+            android:background="@color/fragment_view_color"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp">
+
+                <Button
+                    android:id="@+id/local_button"
+                    android:layout_width="120dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:text="已有图书"
+                    android:background="@drawable/button_backgroud_rmb_chongzhi"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp">
+
+                <Button
+                    android:id="@+id/net_button"
+                    android:layout_width="120dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/button_backgroud_rmb_tixian"
+                    android:text="申请采购"
+                    android:textColor="#000A12"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+        </LinearLayout>
 
         <RelativeLayout
             android:id="@+id/search_relativelayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/fragment_view_color"
-            android:layout_marginTop="10dp"
-            >
+            android:layout_marginTop="8dp"
+            android:background="@color/fragment_view_color">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="搜索历史"
                 android:padding="10dp"
+                android:text="搜索历史"
                 android:textColor="#898989"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
+
             <TextView
                 android:id="@+id/search_remove"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="清除"
-                android:padding="10dp"
-                android:textColor="#E7554D"
-                android:textSize="12sp"
-                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentTop="true"
+                android:padding="10dp"
+                android:text="清除"
+                android:textColor="#E7554D"
+                android:textSize="12sp" />
         </RelativeLayout>
     </FrameLayout>
+
     <GridView
         android:id="@+id/search_lv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="2"
         android:background="@color/fragment_view_color"
-        ></GridView>
+        android:numColumns="2"></GridView>
 
     <!--<android.support.v4.widget.SwipeRefreshLayout-->
-        <!--android:id="@+id/search_swipe"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:visibility="gone">-->
+    <!--android:id="@+id/search_swipe"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:visibility="gone">-->
 
-        <ren.jieshu.jieshuren.loadmore.RecyclerViewWithFooter
-            android:id="@+id/search_load_more"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone">
-        </ren.jieshu.jieshuren.loadmore.RecyclerViewWithFooter>
+    <ren.jieshu.jieshuren.loadmore.RecyclerViewWithFooter
+        android:id="@+id/search_load_more"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"></ren.jieshu.jieshuren.loadmore.RecyclerViewWithFooter>
 
     <!--</android.support.v4.widget.SwipeRefreshLayout>-->
+
+
 </LinearLayout>

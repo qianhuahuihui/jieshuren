@@ -42,6 +42,13 @@ public class RecyclerViewWithFooter extends RecyclerView {
     private FootItem mFootItem = new DefaultFootItem();
     private EmptyItem mEmptyItem = new DefaultEmptyItem();
 
+
+    /**
+     * 恢复可加载状态
+     */
+    public void setRestartLoad(){
+        mState = STATE_PULL_TO_LOAD;
+    }
     private AdapterDataObserver mAdapterDataObserver = new AdapterDataObserver() {
 
         @Override
@@ -391,6 +398,7 @@ public class RecyclerViewWithFooter extends RecyclerView {
         private boolean isFootView(int position) {
             return position == getItemCount() - 1 && mState != STATE_NONE;
         }
+
 
         @Override
         public int getItemViewType(int position) {

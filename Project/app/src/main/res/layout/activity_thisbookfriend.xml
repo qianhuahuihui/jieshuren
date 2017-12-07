@@ -147,19 +147,23 @@
             />
     </RelativeLayout>
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/thisbookfriend_tablayout"
+    <!--<android.support.design.widget.TabLayout-->
+        <!--android:id="@+id/thisbookfriend_tablayout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--app:tabMode="fixed"-->
+        <!--android:background="@color/fragment_view_color"-->
+        <!--fresco:tabSelectedTextColor="@color/selector_newbook_tab_text"-->
+        <!--&gt;-->
+        <!--&lt;!&ndash;style="@style/customTabLayout"&ndash;&gt;-->
+
+    <!--</android.support.design.widget.TabLayout>-->
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:tabMode="fixed"
-        android:background="@color/fragment_view_color"
-        fresco:tabSelectedTextColor="@color/selector_newbook_tab_text"
-        >
-        <!--style="@style/customTabLayout"-->
-
-    </android.support.design.widget.TabLayout>
-
+        android:layout_height="10dp"
+        android:background="@color/fragment_background_color" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/thisbookfriend_recyclerview"
@@ -167,5 +171,14 @@
             android:layout_height="match_parent">
 
         </android.support.v7.widget.RecyclerView>
+
+
+
+    <!--<ren.jieshu.jieshuren.loadmore.RecyclerViewWithFooter-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:id="@+id/book_friends_load_more"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+    <!--</ren.jieshu.jieshuren.loadmore.RecyclerViewWithFooter>-->
 
 </LinearLayout>

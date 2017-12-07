@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import ren.jieshu.jieshuren.R;
+import ren.jieshu.jieshuren.activity.ExpressActivity;
 import ren.jieshu.jieshuren.activity.OrderdetailsActivity;
 import ren.jieshu.jieshuren.entity.ReturnbookBean;
 
@@ -40,17 +41,27 @@ public class ReturnbookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         ((ReturnbookAdapter.ReturnbookHolder)holder).item_returnbook_recyclerview.setLayoutManager(linearLayoutManager);
         //设置适配器
         ItemReturnbookAdapter itemReturnbookAdapter = new ItemReturnbookAdapter(context, returnbookBeanList.get(position).getBooks());
             ((ReturnbookAdapter.ReturnbookHolder) holder).item_returnbook_recyclerview.setAdapter(itemReturnbookAdapter);
-        ((ReturnbookAdapter.ReturnbookHolder)holder).item_returnbook_button_orderdetails.setOnClickListener(this);
+       // ((ReturnbookAdapter.ReturnbookHolder)holder).item_returnbook_button_orderdetails.setOnClickListener(this);
         ((ReturnbookAdapter.ReturnbookHolder)holder).item_returnbook_time.setText("还书时间："+returnbookBeanList.get(position).getReturn_book_time());
         ((ReturnbookAdapter.ReturnbookHolder)holder).item_returnbook_price.setText("押金合计："+returnbookBeanList.get(position).getPrice());
         ((ReturnbookAdapter.ReturnbookHolder)holder).item_returnbook_count.setText("共"+returnbookBeanList.get(position).getCount()+"本书");
+       /* ((ReturnbookAdapter.ReturnbookHolder)holder).item_returnbook_button_logisticsquery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(context,ExpressActivity.class);
+                intent.putExtra("express_code",returnbookBeanList.get(position).getExpress_code().toString());
+                intent.putExtra("express_number",returnbookBeanList.get(position).getExpress_number().toString());
+                context.startActivity(intent);
+            }
+        });*/
     }
 
     @Override
@@ -67,6 +78,7 @@ public class ReturnbookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 context.startActivity(intent);
                 break;
         }
+
     }
 
     class ReturnbookHolder extends RecyclerView.ViewHolder{
@@ -75,14 +87,16 @@ public class ReturnbookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         RecyclerView item_returnbook_recyclerview;
         Button item_returnbook_button_orderdetails;
+        Button item_returnbook_button_logisticsquery;
         TextView item_returnbook_count;
         public ReturnbookHolder(View itemView) {
             super(itemView);
             item_returnbook_recyclerview = (RecyclerView) itemView.findViewById(R.id.item_returnbook_recyclerview);
-            item_returnbook_button_orderdetails = (Button) itemView.findViewById(R.id.item_returnbook_button_orderdetails);
+          //  item_returnbook_button_orderdetails = (Button) itemView.findViewById(R.id.item_returnbook_button_orderdetails);
             item_returnbook_time = (TextView) itemView.findViewById(R.id.item_returnbook_time);
             item_returnbook_count = (TextView) itemView.findViewById(R.id.item_returnbook_count);
             item_returnbook_price = (TextView) itemView.findViewById(R.id.item_returnbook_price);
+          // item_returnbook_button_logisticsquery = itemView.findViewById(R.id.item_returnbook_button_logisticsquery);
         }
     }
 }

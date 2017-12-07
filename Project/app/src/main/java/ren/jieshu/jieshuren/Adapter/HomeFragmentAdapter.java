@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -118,14 +119,16 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             ((HomeFragmentAdapter.HomeFragmentViewHolderTwo) holder).item_homefragment_two_member_name.setText(booksList.get(position).getMember_name());
             ((HomeFragmentAdapter.HomeFragmentViewHolderTwo) holder).item_homefragment_two_book_count.setText("借了" + booksList.get(position).getBook_count() + "本书");
             ((HomeFragmentAdapter.HomeFragmentViewHolderTwo) holder).item_homefragment_two_area_name.setText(booksList.get(position).getArea_name());
-            java.text.DecimalFormat df=new java.text.DecimalFormat("#.0");
+            java.text.DecimalFormat df=new java.text.DecimalFormat("#0.0");
             double d=Double.parseDouble(booksList.get(position).getDistance())/1000;
             ((HomeFragmentAdapter.HomeFragmentViewHolderTwo) holder).item_homefragment_two_distancce.setText(df.format(d)+"km");
-            Date date = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Log.e("psn",booksList.get(position).getTime().toString());
+            Log.e("psn",sdf.format(booksList.get(position).getTime()));
+
             ((HomeFragmentAdapter.HomeFragmentViewHolderTwo) holder).item_homefragment_two_time.setText(sdf.format(booksList.get(position).getTime()));
-            if (booksList.get(position).getMember_image() != null) {
-            ((HomeFragmentAdapter.HomeFragmentViewHolderTwo) holder).item_homefragment_two_headview.setImageURI(Uri.parse(HttpURLConfig.URL + booksList.get(position).getMember_image()));
+            if (booksList.get(position).getJ_headimgurl() != null) {
+            ((HomeFragmentAdapter.HomeFragmentViewHolderTwo) holder).item_homefragment_two_headview.setImageURI(Uri.parse(HttpURLConfig.URL + booksList.get(position).getJ_headimgurl()));
             }
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
             linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -175,7 +178,7 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         if (booksList == null){
             return 1;
         }else {
-            return 1 + booksList.size();
+            return  booksList.size();
         }
     }
 

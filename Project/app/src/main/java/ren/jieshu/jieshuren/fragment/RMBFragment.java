@@ -65,10 +65,12 @@ public class RMBFragment extends BaseFragment {
     }
     @OnClick(R.id.rmb_withdraw)
     private void rmb_withdraw(View view){
-        Intent intent = new Intent();
-        intent.putExtra("count",count);
-        intent.setClass(getContext(), WithdrawActivity.class);
-        startActivity(intent);
+
+        Toast.makeText(getContext(),"请到公众号中去提现，感谢您的配合。",Toast.LENGTH_SHORT).show();
+//        Intent intent = new Intent();
+//        intent.putExtra("count",count);
+//        intent.setClass(getContext(), WithdrawActivity.class);
+//        startActivity(intent);
     }
 
     private String count;

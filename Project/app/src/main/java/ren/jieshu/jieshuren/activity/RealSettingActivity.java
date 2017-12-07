@@ -4,11 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.View;
+import android.widget.Toast;
 
 import com.lidroid.xutils.view.annotation.event.OnClick;
+import com.tencent.bugly.beta.Beta;
 
 import ren.jieshu.jieshuren.R;
 import ren.jieshu.jieshuren.base.BaseActivity;
+import ren.jieshu.jieshuren.util.UpdateManager;
 
 /**
  * Created by laomaotao on 2017/8/26.
@@ -23,11 +26,18 @@ public class RealSettingActivity extends BaseActivity {
             intent.setClass(getBaseContext(),SettingActivity.class);
             startActivity(intent);
     }
+
+    private UpdateManager manager = null;
     @OnClick(R.id.realsetting_rl_versionupdate)
     public void realsetting_rl_versionupdate(View arg0){
-            Intent intent = new Intent();
-            intent.setClass(getBaseContext(),SettingActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent();
+//            intent.setClass(getBaseContext(),SettingActivity.class);
+//            startActivity(intent);
+//        manager = new UpdateManager(RealSettingActivity.this);
+//        manager.checkUpdate();
+
+        Beta.checkUpgrade();
+       // Toast.makeText(this,"已是最新版本哦！",Toast.LENGTH_LONG).show();
     }
     @OnClick(R.id.realsetting_rl_about)
     public void realsetting_rl_about(View arg0){

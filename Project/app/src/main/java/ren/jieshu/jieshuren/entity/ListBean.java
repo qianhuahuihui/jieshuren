@@ -22,6 +22,15 @@ public class ListBean implements Serializable {
     private String error;
     private Integer status;
     private Integer total;
+    private int bookStatus;
+
+    public int getBookStatus() {
+        return bookStatus;
+    }
+
+    public void setBookStatus(int bookStatus) {
+        this.bookStatus = bookStatus;
+    }
 
     public String getBookName() {
         return bookName;

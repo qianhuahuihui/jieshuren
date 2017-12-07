@@ -34,21 +34,21 @@
         android:id="@+id/login_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="借书人，让每个家庭都有一个装满三百本书的书架。"
+        android:text="让生活慢下来，享受阳光和书香..."
         android:layout_below="@id/login_ll"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="现在就开始读书吧"
-        android:layout_below="@id/login_tv"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="现在就开始读书吧"-->
+        <!--android:layout_below="@id/login_tv"-->
+        <!--android:textColor="#FFFFFF"-->
+        <!--android:textSize="14sp"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--/>-->
 </RelativeLayout>

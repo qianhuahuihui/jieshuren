@@ -11,10 +11,13 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
+import java.text.SimpleDateFormat;
+
 import ren.jieshu.jieshuren.Adapter.HomeFragmentBooksAdapter;
 import ren.jieshu.jieshuren.R;
 import ren.jieshu.jieshuren.base.BaseActivity;
 import ren.jieshu.jieshuren.entity.BooksBean;
+import ren.jieshu.jieshuren.entity.HttpURLConfig;
 
 /**
  * Created by laomaotao on 2017/8/20.
@@ -39,6 +42,8 @@ public class ItemHomeFragmentActivity extends BaseActivity {
     private SimpleDraweeView itemhomefragment_headview;
     @ViewInject(R.id.itemhomefragment_rl)
     private RecyclerView itemhomefragment_rl;
+    @ViewInject(R.id.item_distance)
+    private TextView item_distance;
 
     @Override
     protected void setContentView() {
@@ -50,9 +55,12 @@ public class ItemHomeFragmentActivity extends BaseActivity {
         itemhomefragment_member_name.setText(booksBean.getMember_name());
         itemhomefragment_book_count.setText("借了" + booksBean.getBook_count() + "本书");
         itemhomefragment_area_name.setText(booksBean.getArea_name());
-        if (booksBean.getBookImage() != null) {
-            itemhomefragment_headview.setImageURI(Uri.parse(booksBean.getBookImage()));
-        }
+        itemhomefragment_headview.setImageURI(Uri.parse(HttpURLConfig.URL+booksBean.getJ_headimgurl()));
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        itemhomefragment_time.setText(sdf.format(booksBean.getTime()).toString());
+        java.text.DecimalFormat df=new java.text.DecimalFormat("#0.0");
+        double d=Double.parseDouble(booksBean.getDistance())/1000;
+        item_distance.setText(df.format(d)+"km");
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getBaseContext(),3);
         gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         itemhomefragment_rl.setLayoutManager(gridLayoutManager);

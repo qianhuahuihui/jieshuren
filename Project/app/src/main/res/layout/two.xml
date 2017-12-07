@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:layout_margin="8dp"
         android:gravity="center"
-        android:hint="输入价格"
+        android:hint="输入金额"
         android:background="@drawable/bg_et"
         android:padding="12dp"
         android:textSize="12sp" />

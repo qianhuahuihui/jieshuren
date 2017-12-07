@@ -1,10 +1,14 @@
 package ren.jieshu.jieshuren.fragment;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +43,7 @@ import ren.jieshu.jieshuren.activity.WearPaymentListActivity;
 import ren.jieshu.jieshuren.base.BaseFragment;
 import ren.jieshu.jieshuren.entity.MemberBean;
 import ren.jieshu.jieshuren.util.Sign;
+import ren.jieshu.jieshuren.util.UpdateManager;
 
 /**
  * Created by laomaotao on 2017/6/29.
@@ -49,8 +54,8 @@ public class MineFragment extends BaseFragment {
     private SimpleDraweeView minefragment_head;
     @ViewInject(R.id.minefragment_name)
     private TextView minefragment_name;
-    @ViewInject(R.id.minefragment_id)
-    private TextView minefragment_id;
+//    @ViewInject(R.id.minefragment_id)
+//    private TextView minefragment_id;
     @ViewInject(R.id.minefragment_money)
     private TextView minefragment_deposit;
     @ViewInject(R.id.minefragment_deposit)
@@ -126,17 +131,19 @@ public class MineFragment extends BaseFragment {
 
         }
     }
+
     @OnClick(R.id.minefragment_rl_bookshelf)
     public void minefragment_rl_bookshelf(View arg0){
         if (mid == -1){
             isLogin();
         }else {
-            Intent intent = new Intent();
-            intent.setClass(getContext(),MyBookshelfActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent();
+//            intent.setClass(getContext(),MyBookshelfActivity.class);
+//            startActivity(intent);
+            Toast.makeText(getContext(),"正在开发中，敬请期待......",Toast.LENGTH_LONG).show();
         }
     }
-    @OnClick(R.id.minefragment_returnbookaction_click)
+   /* @OnClick(R.id.minefragment_returnbookaction_click)
     public void minefragment_returnbookaction_click(View arg0){
         if (mid == -1){
             isLogin();
@@ -145,12 +152,29 @@ public class MineFragment extends BaseFragment {
             intent.setClass(getContext(), ReturnBookActionActivity.class);
             startActivity(intent);
         }
-    }
+    }*/
     @OnClick(R.id.minefragment_login)
     public void minefragment_login(View arg0){
 
-        Intent intent=new Intent(getActivity(),LoginActivity.class);
-        startActivityForResult(intent, 0);
+        new AlertDialog.Builder(getActivity())
+                .setTitle("警告！").setIcon(R.drawable.jieshurenlogo)
+                .setMessage("老用户请务必先进入借书人公众号借书页面，再过来登录。否者数据将不能同步！！！")
+                .setPositiveButton("我要登录", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent=new Intent(getActivity(),LoginActivity.class);
+                        startActivityForResult(intent, 0);
+                    }
+                })
+                .setNegativeButton("我要同步", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .create().show();
+//        Intent intent=new Intent(getActivity(),LoginActivity.class);
+//        startActivityForResult(intent, 0);
     }
     private RequestCall call;
 
@@ -163,10 +187,22 @@ public class MineFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+     //   Log.e("psn","返回会执行吗");
         addData();
 
     }
 
+//    @Override
+//    public void setUserVisibleHint(boolean isVisibleToUser) {
+//        super.setUserVisibleHint(isVisibleToUser);
+//        if (isVisibleToUser) {
+//            //onResume
+//            Log.e("psn","setUserVisibleHint返回会执行吗");
+//            addData();
+//        } else {
+//            //相当于Fragment的onPause
+//        }
+//    }
     @Override
     public void init() {
     }
@@ -174,10 +210,11 @@ public class MineFragment extends BaseFragment {
     private void addData(){
         SharedPreferences sp = getActivity().getSharedPreferences("member", Context.MODE_PRIVATE);
         mid = sp.getInt("mid", -1);
-        if (mid == -1){
-            minefragment_rl.setVisibility(View.GONE);
-            minefragment_login.setVisibility(View.VISIBLE);
-        } else {
+        Log.e("psn","this time mid is "+mid);
+        if (mid != -1){
+            minefragment_rl.setVisibility(View.VISIBLE);
+            minefragment_login.setVisibility(View.GONE);
+
             String timestamp = System.currentTimeMillis() / 1000 + "";
             Map<String, String> map = new HashMap<>();
             map.put("mid", sp.getInt("mid", -1) + "");
@@ -204,7 +241,7 @@ public class MineFragment extends BaseFragment {
                     if (member.getStatus() == 1) {
                         minefragment_head.setImageURI(Uri.parse(member.getMember().getHeadimgurl()));
                         minefragment_name.setText("昵称：" + member.getMember().getName());
-                        minefragment_id.setText("ID:" + member.getMember().getMid());
+                       // minefragment_id.setText("ID:" + member.getMember().getMid());
                         preferences = getActivity().getSharedPreferences("member", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = preferences.edit();
                         mid = member.getMember().getMid();

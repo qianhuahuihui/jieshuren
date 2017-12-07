@@ -15,9 +15,54 @@ public class BlanceBean implements Serializable {
     private BigDecimal j_fixed_blance;
     private int j_member_id;
     private BigDecimal integral;
+    private BigDecimal frozen_integral;     //冻结积分
+    private BigDecimal total_integral;      //历史共得积分
     private int ranking;
     private String j_name;
     private String j_headimgurl;
+    private Integer status;
+    private String error;
+    private BlanceBean blance;
+
+    public BlanceBean getBlance() {
+        return blance;
+    }
+
+    public void setBlance(BlanceBean blance) {
+        this.blance = blance;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
+    public BigDecimal getFrozen_integral() {
+        return frozen_integral;
+    }
+
+    public void setFrozen_integral(BigDecimal frozen_integral) {
+        this.frozen_integral = frozen_integral;
+    }
+
+    public BigDecimal getTotal_integral() {
+        return total_integral;
+    }
+
+    public void setTotal_integral(BigDecimal total_integral) {
+        this.total_integral = total_integral;
+    }
 
     public int getJ_id() {
         return j_id;

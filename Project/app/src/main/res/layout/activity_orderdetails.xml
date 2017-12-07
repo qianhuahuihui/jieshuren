@@ -222,6 +222,20 @@
                     android:textSize="16sp"/>
             </RelativeLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/red_500"
+                android:text="友情提示："/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:textColor="@color/red_500"
+                android:text="我们是不限时、不限量借阅哦！\n一次借的越多越便宜，每增加1本服务费只需增加1元左右哦！\n 详细借书规则请到借书人公众号里查看。"/>
 
         </LinearLayout>
     </ScrollView>

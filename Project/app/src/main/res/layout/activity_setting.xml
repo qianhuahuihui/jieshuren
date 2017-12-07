@@ -54,16 +54,18 @@
             android:textColor="#E6263238"
             android:textSize="14sp" />
 
-        <ren.jieshu.jieshuren.view.ZQRoundOvalImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/setting_headimage"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_alignParentRight="true"
             android:layout_marginBottom="5dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="25dp"
             android:layout_marginTop="5dp"
             android:layout_centerVertical="true"
-            android:src="@mipmap/jieshurenlogo"/>
+            />
+            <!--android:src="@mipmap/jieshurenlogo"-->
+
 
     </RelativeLayout>
 

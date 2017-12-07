@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -114,6 +115,7 @@ public class ReturnBookActionAdapter extends RecyclerView.Adapter<RecyclerView.V
                 public void onClick(View v) {
                     Intent intent = new Intent();
                     intent.setClass(context,BookDetailsActivity.class);
+                    Log.e("psn","还书页的bookid："+listList.get(getAdapterPosition()).getBook_id());
                     intent.putExtra("bookID",listList.get(getAdapterPosition()).getBook_id());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);

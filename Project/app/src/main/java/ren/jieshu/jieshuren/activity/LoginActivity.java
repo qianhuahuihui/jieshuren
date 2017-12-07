@@ -88,9 +88,12 @@ public class LoginActivity extends BaseActivity {
         @Override
         public void onComplete(SHARE_MEDIA platform, int action, final Map<String, String> data) {
             iosLoadingDialog.dismiss();
-            Log.e("hhhhhhhhh",data.get("iconurl"));
+           // Log.e("hhhhhhhhh",data.get("iconurl"));
+            Log.e("hhhhhhhhh",data.get("openid"));
+            Log.e("hhhhhhhhh",data.get("unionid"));
             call = OkHttpUtils.post().url(HttpURLConfig.URL + "api/user/getToken")
-                    .addParams("openid", data.get("unionid"))
+                    .addParams("openid", data.get("openid"))
+                    .addParams("unionid", data.get("unionid"))
                     .addParams("image", data.get("iconurl"))
                     .addParams("nickname", data.get("name"))
                     .build();
@@ -103,11 +106,12 @@ public class LoginActivity extends BaseActivity {
                 @Override
                 public void onResponse(String response, int id) {
                     iosLoadingDialog.dismiss();
-                    Toast.makeText(getBaseContext(), "登陆成功", Toast.LENGTH_LONG).show();
+
 
                     Gson gson = new Gson();
                     MemberBean member = gson.fromJson(response, MemberBean.class);
                     if (member.getStatus() == 1) {
+                        Toast.makeText(getBaseContext(), "登陆成功", Toast.LENGTH_LONG).show();
                         SharedPreferences preferences = getSharedPreferences("member", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putInt("mid", member.getMember().getMid());
@@ -120,7 +124,7 @@ public class LoginActivity extends BaseActivity {
 //                        setResult(0,intent);
                         finish();
                     } else if (member.getStatus() == 0) {
-                  Toast.makeText(getBaseContext(), member.getError(), Toast.LENGTH_SHORT).show();
+                          Toast.makeText(getBaseContext(), member.getError(), Toast.LENGTH_SHORT).show();
 
                     }
                 }

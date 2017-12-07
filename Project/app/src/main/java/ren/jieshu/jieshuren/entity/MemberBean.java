@@ -29,8 +29,44 @@ public class MemberBean implements Serializable {
     private Double integral;
     private List<AccountBean> account;
     private String error;
+    private String lng;  //
+    private String lat;  //
 
     private MemberBean member;
+    private String address;
+    private String sex;
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getLng() {
+        return lng;
+    }
+
+    public void setLng(String lng) {
+        this.lng = lng;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
 
     public String getMobile() {
         return mobile;

@@ -3,17 +3,22 @@ package ren.jieshu.jieshuren.activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -27,10 +32,13 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import com.zhy.http.okhttp.request.RequestCall;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import okhttp3.Call;
 import ren.jieshu.jieshuren.Adapter.NewbookAdapter;
+import ren.jieshu.jieshuren.entity.Douban;
+import ren.jieshu.jieshuren.entity.DoubanBook;
 import ren.jieshu.jieshuren.entity.HttpURLConfig;
 import ren.jieshu.jieshuren.R;
 import ren.jieshu.jieshuren.base.BaseActivity;
@@ -59,22 +67,33 @@ public class SearchActivity extends BaseActivity {
     private RecyclerViewWithFooter search_load_more;
 //    @ViewInject(R.id.search_swipe)
 //    private SwipeRefreshLayout search_swipe;
-    @ViewInject(R.id.search_number)
-    private TextView search_number;
+//    @ViewInject(R.id.search_number)
+//    private TextView search_number;
     @ViewInject(R.id.search_relativelayout)
     private RelativeLayout search_relativelayout;
     @ViewInject(R.id.search_searchbutton)
     private ImageView search_searchbutton;
+    @ViewInject(R.id.search_button_layout)
+    private LinearLayout search_button_layout;
+    @ViewInject(R.id.local_button)
+    private Button local_button;
+    @ViewInject(R.id.net_button)
+    private Button net_button;
+
     private Integer page = 1;
-    private List<BooksBean> listall;
+    private List<DoubanBook> dbl;
     private RequestCall stringcall;
     private NewbookAdapter newbookAdapter;
     private int isSearched = 0;
+
+//    @ViewInject(R.id.search_douban)
+//    private Button search_douban;
     private StringCallback stringCallback = new StringCallback() {
         @Override
         public void onError(Call call, Exception e, int id) {
 
             iosLoadingDialog.dismiss();
+            search_load_more.setVisibility(View.VISIBLE);
             search_load_more.setEmpty(getString(R.string.internet_error),R.drawable.nullpoint);
         }
 
@@ -84,25 +103,45 @@ public class SearchActivity extends BaseActivity {
             Gson gson = new Gson();
             BooksBean books = gson.fromJson(response, BooksBean.class);
             if (books.getStatus() == 1){
+                search_button_layout.setVisibility(View.VISIBLE);
+                search_load_more.setVisibility(View.VISIBLE);
                 if (books.getBooks().size() > 0) {
-                    search_load_more.setVisibility(View.VISIBLE);
                     search_lv.setVisibility(View.GONE);
+          //          search_douban.setVisibility(View.GONE);
                     isSearched = 1;
                     search_searchbutton.setImageResource(R.drawable.delet);
                     //刷新数据
                     page = page + 1;
-                    listall.addAll( books.getBooks());
+                    list.addAll(books.getBooks());
                     search_load_more.getAdapter().notifyDataSetChanged();
 
                     search_relativelayout.setVisibility(View.GONE);
-                    search_number.setVisibility(View.VISIBLE);
-                    search_number.setText("共"+listall.size()+"个结果");
+                    //search_number.setVisibility(View.VISIBLE);
+                    //search_number.setText("共"+list.size()+"个结果");
+
                 }else {
                     if (page == 1){
-                        listall.removeAll(listall);
-                        search_load_more.setEmpty("没有搜索到这本书",R.drawable.nullpoint);
+                      //  list.removeAll(list);
+                        search_lv.setVisibility(View.GONE);
+                        search_relativelayout.setVisibility(View.GONE);
+                       // search_number.setVisibility(View.VISIBLE);
+                        //search_number.setText("平台尚未录入该书，是否向借书人申请采购！");
+//                        search_douban.setVisibility(View.VISIBLE);
+//                        search_douban.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//                                //切换为豆瓣的适配器
+//                                doubanFlag = true;
+//                                page = 1;
+//                                setAdapterData(doubanFlag);
+//                                addDoubanData(page);
+//                            }
+//                        });
+
+                        search_load_more.setEmpty("没有搜索到这本书*^_^*\n请点击申请采购查看更多书籍~O(n_n)O~",R.drawable.nullpoint);
                     }else {
-                        search_load_more.setEmpty(getString(R.string.no_more_data),R.drawable.nullpoint);
+                        Log.e("psn",getString(R.string.no_more_data));
+                        search_load_more.setEmpty("没有更多数据啦*^_^*\n请点击申请采购查看更多书籍~O(n_n)O~",R.drawable.nullpoint);
                     }
                 }
             }else if (books.getStatus() == 0){
@@ -111,28 +150,110 @@ public class SearchActivity extends BaseActivity {
         }
     };
 
+    //转换适配器数据
+    private List<Object> list = new ArrayList<>();
+    private void setAdapterData(boolean doubanFlag ){
+        bookAdapter.setList(list,doubanFlag);
+        search_load_more.setRestartLoad();
+        search_load_more.getAdapter().notifyDataSetChanged();
+    }
+
+    private  StringCallback doubancall = new StringCallback() {
+        @Override
+        public void onError(Call call, Exception e, int id) {
+            iosLoadingDialog.dismiss();
+            search_lv.setVisibility(View.GONE);
+            search_relativelayout.setVisibility(View.GONE);
+        //    search_douban.setVisibility(View.GONE);
+            search_load_more.setVisibility(View.VISIBLE);
+            search_load_more.setEmpty(getString(R.string.internet_error),R.drawable.nullpoint);
+        }
+
+        @Override
+        public void onResponse(String response, int id) {
+            iosLoadingDialog.dismiss();
+            Gson g = new Gson();
+            Douban dbook = g.fromJson(response, Douban.class);
+            int bookCount = dbook.getData().getBooks().size();
+            Log.e("psn","doubsnsize:==="+bookCount);
+            if (dbook.getStatus() == 1) {
+                if (bookCount > 0) {
+                    search_lv.setVisibility(View.GONE);
+                    search_relativelayout.setVisibility(View.GONE);
+              //      search_douban.setVisibility(View.GONE);
+                    search_load_more.setVisibility(View.VISIBLE);
+
+                    isSearched = 1;
+                    search_searchbutton.setImageResource(R.drawable.delet);
+                    //刷新数据
+                    page = page + 1;
+                    list.addAll(dbook.getData().getBooks());
+                    search_load_more.getAdapter().notifyDataSetChanged();
+//                    search_number.setVisibility(View.VISIBLE);
+//                    search_number.setText("豆瓣共"+list.size()+"个结果");
+
+                } else {
+                    if (page == 1) {
+                        Log.e("psn", "没有搜索到该书，怎么显示呢");
+                        list.removeAll(list);
+                        search_lv.setVisibility(View.GONE);
+                        search_relativelayout.setVisibility(View.GONE);
+//                        search_douban.setVisibility(View.GONE);
+//                        search_number.setVisibility(View.GONE);
+                        search_load_more.setVisibility(View.VISIBLE);
+                        search_load_more.setEmpty("豆瓣平台也未搜索到该书*^_^*\n请正确输入书名O><O",R.drawable.nullpoint);
+                    } else {
+                        Log.e("psn", getString(R.string.no_more_data));
+                        search_load_more.setEmpty(getString(R.string.no_more_data), R.drawable.nullpoint);
+                    }
+                }
+            } else if (dbook.getStatus() == 0) {
+                Toast.makeText(getBaseContext(), dbook.getError(), Toast.LENGTH_SHORT).show();
+            }
+        }
+    } ;
+    protected void addDoubanData(Integer page) {
+
+        RequestCall dbcall = OkHttpUtils.get().url(HttpURLConfig.URL + "api/douban/book/list")
+                .addParams("p", search_edittext.getText().toString().trim())
+                .addParams("page",page.toString())
+                .build();
+
+        dbcall.execute(doubancall);
+//        iosLoadingDialog.show(getFragmentManager(), "iosLoadingDialog");
+    }
+
+    private boolean doubanFlag = false;
     @OnClick(R.id.search_searchbutton)
     public void search_searchbutton(View arg0) {
         if (!search_edittext.getText().toString().trim().equals("")) {
             if (isSearched == 0) {
+
+                list.clear();
+                doubanFlag = false;
+                setAdapterData(doubanFlag);
+
                 boolean hasData = hasData(search_edittext.getText().toString().trim());
                 if (!hasData) {
                     insertData(search_edittext.getText().toString().trim());
                     queryData("");
                 }
                 // TODO 根据输入的内容模糊查询商品，并跳转到另一个界面，由你自己去实现
-                listall.clear();
-                addData(1);
+
+                page = 1;
+                addData(page);
+               // search_load_more.setRestartLoad();
+                search_load_more.getAdapter().notifyDataSetChanged();
 
             } else {
                 search_load_more.setVisibility(View.GONE);
                 search_lv.setVisibility(View.VISIBLE);
                 isSearched = 0;
-                listall.removeAll(listall);
+                list.removeAll(list);
                 page = 1;
                 search_searchbutton.setImageResource(search);
                 search_relativelayout.setVisibility(View.VISIBLE);
-                search_number.setVisibility(View.GONE);
+                //search_number.setVisibility(View.GONE);
                 search_edittext.setText("");
 
             }
@@ -143,7 +264,8 @@ public class SearchActivity extends BaseActivity {
     public void search_remove(View arg0) {
         deleteData();
         queryData("");
-
+        //listall.removeAll(listall);
+        list.clear();
     }
 
     @OnClick(R.id.search_back)
@@ -199,17 +321,60 @@ public class SearchActivity extends BaseActivity {
         db.close();
     }
 
+    private  NewbookAdapter bookAdapter;
     protected void initView() {
         page = 1;
-        listall = new ArrayList<>();
-        search_load_more.setAdapter(new NewbookAdapter(getContext(), listall));
+        list = new ArrayList<>();
+        bookAdapter = new NewbookAdapter(getContext());
+        list.clear();
+        search_load_more.setAdapter(bookAdapter);
+        doubanFlag = false;
+        setAdapterData(doubanFlag);
+        Log.e("psn","执行。。。。。。");
 //        mRecyclerViewWithFooter.setStaggeredGridLayoutManager(2);
         search_load_more.setFootItem(new DefaultFootItem());//默认是这种
 //        mRecyclerViewWithFooter.setFootItem(new CustomFootItem());//自定义
         search_load_more.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
+                if (!doubanFlag) {
+                    addData(page);
+                }else{
+                    Log.e("psn","豆瓣加载更多。。。。。。");
+                    addDoubanData(page);
+                }
+            }
+        });
+
+        local_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //切换为本地的适配器
+                list.removeAll(list);
+                local_button.setTextColor(Color.parseColor("#FFFFFF"));
+                local_button.setBackground(getResources().getDrawable(R.drawable.button_backgroud_rmb_chongzhi));
+                net_button.setTextColor(Color.parseColor("#000A12"));
+                net_button.setBackground(getResources().getDrawable(R.drawable.button_backgroud_rmb_tixian));
+                doubanFlag = false;
+                page = 1;
+                setAdapterData(doubanFlag);
                 addData(page);
+            }
+        });
+
+        net_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //切换为豆瓣的适配器
+                list.removeAll(list);
+                net_button.setTextColor(Color.parseColor("#FFFFFF"));
+                net_button.setBackground(getResources().getDrawable(R.drawable.button_backgroud_rmb_chongzhi));
+                local_button.setTextColor(Color.parseColor("#000A12"));
+                local_button.setBackground(getResources().getDrawable(R.drawable.button_backgroud_rmb_tixian));
+                doubanFlag = true;
+                page = 1;
+                setAdapterData(doubanFlag);
+                addDoubanData(page);
             }
         });
 
@@ -228,9 +393,16 @@ public class SearchActivity extends BaseActivity {
                             insertData(search_edittext.getText().toString().trim());
                             queryData("");
                         }
-                        listall.clear();
+                        page = 1;
+                        list.clear();
                         // TODO 根据输入的内容模糊查询商品，并跳转到另一个界面，由你自己去实现
-                        addData(1);
+                       if(!doubanFlag) {
+                           addData(page);
+                       }else{
+                           addDoubanData(page);
+                       }
+                        search_load_more.setRestartLoad();
+                        search_load_more.getAdapter().notifyDataSetChanged();
 
                     }
                 }

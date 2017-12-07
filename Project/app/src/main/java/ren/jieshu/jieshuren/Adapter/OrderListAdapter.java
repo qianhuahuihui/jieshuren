@@ -89,6 +89,9 @@ public class OrderListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 if (type.equals("0")){
                     updateInterface.payOrderGroup(position,returnbookBeanList.get(position));
                 }else if(type.equals("2")){
+
+                    updateInterface.searchExpress(position,returnbookBeanList.get(position));
+
                 }
             }
         });
@@ -136,6 +139,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         void removeOrderGroup(Integer position,ReturnbookBean returnbookBean);
         void payOrderGroup(Integer position,ReturnbookBean returnbookBean);
         void confirm(Integer position,ReturnbookBean returnbookBean);
+        void searchExpress(Integer position,ReturnbookBean returnbookBean);
 
     }
 }

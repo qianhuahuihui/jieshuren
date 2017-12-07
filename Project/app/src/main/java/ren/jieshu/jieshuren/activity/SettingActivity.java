@@ -8,11 +8,13 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -27,6 +29,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -53,6 +56,7 @@ import ren.jieshu.jieshuren.Adapter.SexAdapter;
 import ren.jieshu.jieshuren.R;
 import ren.jieshu.jieshuren.base.BaseActivity;
 import ren.jieshu.jieshuren.entity.HttpURLConfig;
+import ren.jieshu.jieshuren.entity.MemberBean;
 import ren.jieshu.jieshuren.entity.MessageBean;
 import ren.jieshu.jieshuren.util.IsPhone;
 import ren.jieshu.jieshuren.util.Name;
@@ -69,23 +73,22 @@ public class SettingActivity extends BaseActivity {
     private PopupWindow pop;
     private LinearLayout ll_popup;
     private SexAdapter sexAdapter;
-    private RequestCall readCall;
     private File file;
     private String lat;
     private String lng;
     private String sex;
-    private RequestCall call;
+    private RequestCall readCall,call,fixcall;
 
     @OnClick(R.id.setting_back)
     private void setting_back(View view){
-        Intent intent = new Intent();
-        intent.setClass(getBaseContext(),MainActivity.class);
-        intent.putExtra("PAYTYPE","10");
-        startActivity(intent);
+//        Intent intent = new Intent();
+//        intent.setClass(getBaseContext(),MainActivity.class);
+//        intent.putExtra("PAYTYPE","10");
+//        startActivity(intent);
         finish();
     }
     @ViewInject(R.id.setting_headimage)
-    private ZQRoundOvalImageView setting_headimage;
+    private SimpleDraweeView setting_headimage;
     @ViewInject(R.id.setting_name)
     private EditText setting_name;
     @ViewInject(R.id.setting_phone)
@@ -107,9 +110,11 @@ public class SettingActivity extends BaseActivity {
                 Toast.makeText(getBaseContext(), "请选择性别", Toast.LENGTH_SHORT).show();
             } else if (setting_phone.getText().toString().trim().equals("")) {
                 Toast.makeText(getBaseContext(), "请填写联系电话", Toast.LENGTH_SHORT).show();
-            } else if (file == null) {
-                Toast.makeText(getBaseContext(), "请选择头像上传", Toast.LENGTH_SHORT).show();
-            } else {
+            }
+            //else if (file == null) {
+               // Toast.makeText(getBaseContext(), "请选择头像上传", Toast.LENGTH_SHORT).show();
+               //}
+            else {
                 SharedPreferences sp = getBaseContext().getSharedPreferences("member", Context.MODE_PRIVATE);
 
                 String timestamp = System.currentTimeMillis() / 1000 + "";
@@ -126,7 +131,7 @@ public class SettingActivity extends BaseActivity {
                 String sign = Sign.sign(map, sp.getString("token", ""));
                 map.put("sign", sign);
                 readCall = OkHttpUtils.post().url(HttpURLConfig.URL + "private/user/userSet")
-                        .addFile("headimg", Name.getRandomFileName(), file)
+                    //    .addFile("headimg", Name.getRandomFileName(), file)
                         .params(map)
                         .build();
                 readCall.execute(new StringCallback() {
@@ -203,45 +208,43 @@ public class SettingActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-//        SharedPreferences sp = getSharedPreferences("member", Context.MODE_PRIVATE);
-//        Integer mid = sp.getInt("mid", -1);
-//        if (mid != -1) {
-//            String timestamp = System.currentTimeMillis() / 1000 + "";
-//            Map<String, String> map = new HashMap<>();
-//            map.put("mid", sp.getInt("mid", -1) + "");
-//            map.put("timestamp", timestamp);
-//            String sign = Sign.sign(map, sp.getString("token", ""));
-//            call = OkHttpUtils.post().url(HttpURLConfig.URL + "private/user/get")
-//                    .addParams("mid", sp.getInt("mid", -1) + "")
-//                    .addParams("timestamp", timestamp)
-//                    .addParams("sign", sign)
-//                    .build();
-//            call.execute(new StringCallback() {
-//
-//
-//                @Override
-//                public void onError(Call call, Exception e, int id) {
-//                    iosLoadingDialog.dismiss();
-//                }
-//
-//                @Override
-//                public void onResponse(String response, int id) {
-//                    iosLoadingDialog.dismiss();
-//                    Gson gson = new Gson();
-//                    MemberBean member = gson.fromJson(response, MemberBean.class);
-//                    if (member.getStatus() == 1) {
-//                        getImage(member.getMember().getHeadimgurl());
-//                        setting_name.setText(member.getMember().getName());
-//                        setting_realname.setText(member.getMember().getRealname());
-//                        setting_phone.setText(member.getMember().getMobile());
-//                    } else if (member.getStatus() == 0) {
-//                        Toast.makeText(getBaseContext(), member.getError(), Toast.LENGTH_SHORT).show();
-//
-//                    }
-//                }
-//            });
-//            iosLoadingDialog.show(getFragmentManager(), "iosLoadingDialog");
-//        }
+        SharedPreferences sp = getSharedPreferences("member", Context.MODE_PRIVATE);
+        Integer mid = sp.getInt("mid", -1);
+        if (mid != -1) {
+            String timestamp = System.currentTimeMillis() / 1000 + "";
+            Map<String, String> map = new HashMap<>();
+            map.put("mid", sp.getInt("mid", -1) + "");
+            map.put("timestamp", timestamp);
+            String sign = Sign.sign(map, sp.getString("token", ""));
+            call = OkHttpUtils.post().url(HttpURLConfig.URL + "private/user/get")
+                    .addParams("mid", sp.getInt("mid", -1) + "")
+                    .addParams("timestamp", timestamp)
+                    .addParams("sign", sign)
+                    .build();
+            call.execute(new StringCallback() {
+
+
+                @Override
+                public void onError(Call call, Exception e, int id) {
+                }
+
+                @Override
+                public void onResponse(String response, int id) {
+                    Gson gson = new Gson();
+                    MemberBean member = gson.fromJson(response, MemberBean.class);
+                    if (member.getStatus() == 1) {
+                        setting_headimage.setImageURI(Uri.parse(member.getMember().getHeadimgurl()));
+                        setting_name.setText(member.getMember().getName());
+                        setting_realname.setText(member.getMember().getRealname());
+                        setting_phone.setText(member.getMember().getMobile());
+                    } else if (member.getStatus() == 0) {
+                        Toast.makeText(getBaseContext(), member.getError(), Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+            });
+           // iosLoadingDialog.show(getFragmentManager(), "iosLoadingDialog");
+        }
     }
 
     public void getImage(String url) {
@@ -312,6 +315,7 @@ public class SettingActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Bitmap bmp = null;
         if (requestCode == 1 && resultCode == Activity.RESULT_OK
                 && null != data) {
             String sdState = Environment.getExternalStorageState();
@@ -323,7 +327,7 @@ public class SettingActivity extends BaseActivity {
                     Calendar.getInstance(Locale.CHINA)) + ".jpg";
             Bundle bundle = data.getExtras();
             // 获取相机返回的数据，并转换为图片格式
-            Bitmap bmp = (Bitmap) bundle.get("data");
+            bmp = (Bitmap) bundle.get("data");
             FileOutputStream fout = null;
             String filename = null;
             try {
@@ -343,7 +347,7 @@ public class SettingActivity extends BaseActivity {
                     showToastShort("上传失败");
                 }
             }
-            setting_headimage.setImageBitmap(bmp);
+           // setting_headimage.setImageBitmap(bmp);
             file = new File(filename);
 
 //            staffFileupload(new File(filename));
@@ -360,9 +364,9 @@ public class SettingActivity extends BaseActivity {
                 String picturePath = c.getString(columnIndex);
                 c.close();
 
-                Bitmap bmp = BitmapFactory.decodeFile(picturePath);
+                bmp = BitmapFactory.decodeFile(picturePath);
                 // 获取图片并显示
-                setting_headimage.setImageBitmap(bmp);
+                //setting_headimage.setImageBitmap(bmp);
                 saveBitmapFile(UtilImags.compressScale(bmp), UtilImags.SHOWFILEURL(SettingActivity.this) + "/stscname.jpg");
                 file = new File(UtilImags.SHOWFILEURL(SettingActivity.this) + "/stscname.jpg");
 //                staffFileupload(new File(UtilImags.SHOWFILEURL(SettingActivity.this) + "/stscname.jpg"));
@@ -370,6 +374,13 @@ public class SettingActivity extends BaseActivity {
                 showToastShort("上传失败");
             }
         }
+
+        if(bmp!=null){
+           // Log.e("psn","================start");
+            fixHeadImg(bmp);
+        }
+
+
 //        if (requestCode == 10 && resultCode == Activity.RESULT_OK
 //                && null != data) {
 //                String address = data.getStringExtra("Address");
@@ -389,6 +400,48 @@ public class SettingActivity extends BaseActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 修改头像
+     */
+    public void fixHeadImg(final Bitmap bmp){
+
+        SharedPreferences sp = getBaseContext().getSharedPreferences("member", Context.MODE_PRIVATE);
+        Log.e("psn","================start"+sp.getInt("mid", -1) + "======"+file.getName());
+        String timestamp = System.currentTimeMillis() / 1000 + "";
+        Map<String, String> map = new HashMap<>();
+        map.put("mid", sp.getInt("mid", -1) + "");
+        map.put("timestamp", timestamp);
+        String sign = Sign.sign(map, sp.getString("token", ""));
+        map.put("sign", sign);
+        fixcall = OkHttpUtils.post().url(HttpURLConfig.URL + "private/user/fixHeadImg")
+                .addParams("mid", sp.getInt("mid", -1) + "")
+                .addParams("timestamp", timestamp)
+                .addParams("sign", sign)
+                .addFile("headimg", Name.getRandomFileName(), file)
+                .build();
+        fixcall.execute(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                Toast.makeText(getBaseContext(), "网络出现问题，请重试", Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                Gson gson = new Gson();
+                MessageBean messageBean = gson.fromJson(response, MessageBean.class);
+                if (messageBean.getStatus() == 1) {
+
+                    setting_headimage.setImageBitmap(bmp);
+                    Toast.makeText(getBaseContext(), messageBean.getMsg(), Toast.LENGTH_SHORT).show();
+                } else if (messageBean.getStatus() == 0) {
+                    Toast.makeText(getBaseContext(), messageBean.getError(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 
     /***

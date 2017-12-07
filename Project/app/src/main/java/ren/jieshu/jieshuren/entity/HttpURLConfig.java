@@ -5,8 +5,10 @@ package ren.jieshu.jieshuren.entity;
  */
 
 public class HttpURLConfig {
-    public static String URL = "http://test.jieshu.ren/jieshuren_client/";
-//    public static String URL = "http://192.168.43.45:8080/jieshuren_client/";
-//    public static String URL = "http://192.168.1.104:8080/jieshuren_client/";
-//    public static String URL = "http://192.168.100.111:8080/jieshuren_client/";
+  //  public static String URL = "http://39.108.57.221:80/jieshuren_client/";
+ //   public static String URL = "http://106.15.95.71:80/jieshuren_client/";
+  //  public static String URL = "http://test.jieshu.ren/jieshuren_client/";
+    public static String URL = "http://192.168.3.3:8080/jieshuren_client/";
+   // public static String URL = "http://192.168.100.106:8080/jieshuren_client/";
+  //    public static String URL = "http://192.168.1.100:8080/jieshuren_client/";
 }

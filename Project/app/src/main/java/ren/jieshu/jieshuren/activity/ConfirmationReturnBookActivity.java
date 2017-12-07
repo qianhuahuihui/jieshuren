@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -67,15 +68,18 @@ public class ConfirmationReturnBookActivity extends BaseActivity {
     private CaptureActivity mCaptureContext;
     private OrderBean orderBean;
     private SharedPreferences sp;
-    private ExpressBean expressBean;
+    //private ExpressBean expressBean;
     private QrScan qrScan;
     private String express_number = "";
-    private String express_name = "";
+    private String express_name = "",express_code="";
     private BigDecimal priceAll;
-
+    @OnClick(R.id.pay_back)
+    private void pay_back(View view){
+        finish();
+    }
     @OnClick(R.id.confirmationreturnbook_returnbook)
     private void confirmationreturnbook_returnbook(View view){
-        if (!express_name.equals("")) {
+        if (!express_number.equals("")) {
             List<BookidBean> beanList = new ArrayList<>();
             for (int i = 0; i < orderBean.getList().size(); i++) {
                 BookidBean bookidBean = new BookidBean();
@@ -87,13 +91,14 @@ public class ConfirmationReturnBookActivity extends BaseActivity {
             SortedMap<String, Object> sort = new TreeMap<String, Object>();
             sort.put("mid", sp.getInt("mid", -1) + "");
             sort.put("timestamp", timestamp);
-            sort.put("express_code", expressBean.getExpress().getPinyin());
+            sort.put("express_code", express_code);
             sort.put("express_number", express_number);
             sort.put("express_name", express_name);
             sort.put("is_express", "0");
+            //Log.e("psn",expressBean.getExpress().getCom_code()+"====="+expressBean.getExpress().getPinyin());
             String sign = Sign.delsign(sort, sp.getString("token", ""));
             OkHttpUtils.postString()
-                    .url(HttpURLConfig.URL + "private/returnBook/finish?mid=" + sp.getInt("mid", -1) + "&timestamp=" + timestamp + "&sign=" + sign + "&express_code=" + expressBean.getExpress().getPinyin() + "&express_name=" + express_name + "&express_number=" + express_number + "&is_express=0")
+                    .url(HttpURLConfig.URL + "private/returnBook/finish?mid=" + sp.getInt("mid", -1) + "&timestamp=" + timestamp + "&sign=" + sign + "&express_code=" + express_code + "&express_name=" + express_name + "&express_number=" + express_number + "&is_express=0")
                     .mediaType(MediaType.parse("application/json; charset=utf-8"))
                     .content(json)
                     .build()
@@ -138,7 +143,7 @@ public class ConfirmationReturnBookActivity extends BaseActivity {
                 mCaptureContext = (CaptureActivity)context;
                 QrScan.getInstance().finishScan(mCaptureContext);
                 confirmationreturnbook_et_code.setText(result);
-                getExpress(result);
+                //getExpress(result);
             }
         });
 
@@ -162,7 +167,7 @@ public class ConfirmationReturnBookActivity extends BaseActivity {
                         ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
                                 getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                         express_number = confirmationreturnbook_et_code.getText().toString().trim();
-                        getExpress(express_number);
+                        //getExpress(express_number);
 
                     }
                 }
@@ -189,35 +194,35 @@ public class ConfirmationReturnBookActivity extends BaseActivity {
         ConfirmationReturnBookAdapter confirmationReturnBookAdapter = new ConfirmationReturnBookAdapter(getBaseContext(), orderBean.getList());
         confirmationreturnbook_load_more.setAdapter(confirmationReturnBookAdapter);
     }
-    private void getExpress(String express){
-
-        String timestamp = System.currentTimeMillis() / 1000 + "";
-        Map<String,String> sort=new HashMap<>();
-        sort.put("mid", sp.getInt("mid", -1) + "");
-        sort.put("timestamp", timestamp);
-        sort.put("code", express);
-        String sign = Sign.sign(sort, sp.getString("token", ""));
-        sort.put("sign", sign);
-        call = OkHttpUtils.get().url(HttpURLConfig.URL + "private/express/auto")
-                .params(sort)
-                .build();
-        call.execute(new StringCallback() {
-            @Override
-            public void onError(Call call, Exception e, int id) {
-                Toast.makeText(getBaseContext(), "网络出现问题，请重试", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onResponse(String response, int id) {
-                Gson gson = new Gson();
-                expressBean = gson.fromJson(response, ExpressBean.class);
-                if (expressBean.getStatus() == 1) {
-                    confirmationreturnbook_kuaidi.setText(expressBean.getExpress().getName());
-                    express_name = expressBean.getExpress().getName();
-                } else if (expressBean.getStatus() == 0) {
-                    Toast.makeText(getBaseContext(), expressBean.getError(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
+//    private void getExpress(String express){
+//
+//        String timestamp = System.currentTimeMillis() / 1000 + "";
+//        Map<String,String> sort=new HashMap<>();
+//        sort.put("mid", sp.getInt("mid", -1) + "");
+//        sort.put("timestamp", timestamp);
+//        sort.put("code", express);
+//        String sign = Sign.sign(sort, sp.getString("token", ""));
+//        sort.put("sign", sign);
+//        call = OkHttpUtils.get().url(HttpURLConfig.URL + "private/express/auto")
+//                .params(sort)
+//                .build();
+//        call.execute(new StringCallback() {
+//            @Override
+//            public void onError(Call call, Exception e, int id) {
+//                Toast.makeText(getBaseContext(), "网络出现问题，请重试", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onResponse(String response, int id) {
+//                Gson gson = new Gson();
+//                expressBean = gson.fromJson(response, ExpressBean.class);
+//                if (expressBean.getStatus() == 1) {
+//                    confirmationreturnbook_kuaidi.setText(expressBean.getExpress().getName());
+//                    express_name = expressBean.getExpress().getName();
+//                } else if (expressBean.getStatus() == 0) {
+//                    Toast.makeText(getBaseContext(), expressBean.getError(), Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//    }
 }
